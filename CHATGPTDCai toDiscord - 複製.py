@@ -4,7 +4,6 @@ import discord
 import requests
 from discord.ext import commands
 from io import BytesIO
-from keep_alive import keep_alive
 
 
 # Get API keys from environment variables
@@ -51,6 +50,6 @@ async def img(ctx, *, prompt):
     # Send generated image to Discord channel
     await ctx.message.channel.send(file=discord.File(BytesIO(img_data), "generated_image.jpg"))
 	
-keep_alive()
+
 #enter your discord API TOKEN replace key2
 bot.run(key2)
