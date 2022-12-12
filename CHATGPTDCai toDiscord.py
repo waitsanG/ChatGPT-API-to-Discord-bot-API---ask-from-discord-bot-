@@ -13,14 +13,12 @@ openai.api_key = "openai_token"
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# Create a throttler to limit requests to 45 per second
-throttler = Throttler(rate_limit=48, period=1)
+# Create a new bot with all intents enabled
+intents = discord.Intents().all()
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.command()
 async def ask(ctx, *, prompt):
-    # Throttle requests to 45 per second
-    await throttler.throttle()
-
     # Call OpenAI API to complete prompt
     response = openai.Completion.create(
         engine="text-davinci-003",
