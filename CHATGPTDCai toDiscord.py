@@ -2,6 +2,9 @@ import os
 import discord
 from discord.ext import commands
 import openai
+from asyncio_throttle import Throttler
+
+
 
 # Set OpenAI API key
 openai.api_key = "openai_token"
@@ -10,8 +13,14 @@ openai.api_key = "openai_token"
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+# Create a throttler to limit requests to 45 per second
+throttler = Throttler(rate_limit=48, period=1)
+
 @bot.command()
 async def ask(ctx, *, prompt):
+    # Throttle requests to 45 per second
+    await throttler.throttle()
+
     # Call OpenAI API to complete prompt
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -26,4 +35,4 @@ async def ask(ctx, *, prompt):
     completed_text = response["choices"][0]["text"]
     await ctx.message.channel.send(completed_text)
 
-bot.run("discord_token")
+bot.run(discord_token)
