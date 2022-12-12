@@ -2,10 +2,9 @@ import os
 import discord
 from discord.ext import commands
 import openai
-key1 = os.environ['openaikey']
-key2 = os.environ['discordkey']
+
 # Set OpenAI API key
-openai.api_key = key1
+openai.api_key = "openai_token"
 
 # Create a new bot with all intents enabled
 intents = discord.Intents().all()
@@ -27,4 +26,4 @@ async def ask(ctx, *, prompt):
     completed_text = response["choices"][0]["text"]
     await ctx.message.channel.send(completed_text)
 
-bot.run(key2)
+bot.run("discord_token")
