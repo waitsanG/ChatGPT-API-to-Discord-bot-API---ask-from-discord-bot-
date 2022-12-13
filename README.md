@@ -1,4 +1,6 @@
 # ChatGPT-API-to-Discord-bot-API-ask-from-discord-bot- BY(HK_PhAntoM/萨斯提阿)
+支持我:patreon.com/user?u=59184091
+
 python代码让你通过discord bot向openai GPT提問
 记得替换自己的openai还有DISCORD API金钥   (OPENAI=KEY1 DISCORD=KEY2)
 記得命令行下載pip
