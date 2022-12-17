@@ -7,7 +7,7 @@ from asyncio_throttle import Throttler
 
 
 # Set OpenAI API key
-openai.api_key = "openai_token"
+openai.api_key = "key1"
 
 # Create a new bot with all intents enabled
 intents = discord.Intents().all()
@@ -33,4 +33,4 @@ async def ask(ctx, *, prompt):
     completed_text = response["choices"][0]["text"]
     await ctx.message.channel.send(completed_text)
 
-bot.run(discord_token)
+bot.run("Key2")
